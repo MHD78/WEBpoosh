@@ -20,7 +20,6 @@
     font-family: Graphik;
     src: url(fonts/Graphik-Regular.woff2);
 }
-
 .message{
     padding: 5px 0;
     background-color: black;
@@ -47,6 +46,9 @@ nav{
     max-width: var(--mx-width);
     max-width: var(--mx-width);
     margin: auto;
+    position: absolute;
+    z-index: 1;
+
 }
 .mobile{
     position: sticky;
@@ -204,7 +206,6 @@ main{
     width: 100%;
 }
 .items ul{
-    visibility: hidden;
     list-style-type: none;
     display: flex;
     justify-content: flex-start;
@@ -361,6 +362,9 @@ form input[type="submit"]{
     }
     .mobile{
         display: none;
+    }
+    .items ul{
+        visibility: hidden;
     }
 }
 @media only screen and (max-width: 800px) {

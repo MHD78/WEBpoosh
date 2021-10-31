@@ -59,7 +59,7 @@ class MainRender {
                 Prosec.append(quick);
                 ex[2].style.visibility = "visible"
                 ex[3].style.visibility = "visible"
-            } else { }
+            }
         });
         inside.addEventListener('mouseleave', () => {
             ProImg.src = `${item.image}`
@@ -94,6 +94,5 @@ class Final {
 }
 
 Final.init();
-
 
 
