@@ -68,12 +68,14 @@
             <div id="card" class="items-card">
                 <template id="item__template">
                     <div class="items">
-                        <img src="">
+                        <section id="wraper">
+                            <img id="main__pic" src="">
+                        </section>
                         <div class="rest">
                             <p></p>
                             <p dir="rtl"></p>
                             <img class="color" src="">
-                            <ul class="size">
+                            <ul id="sizes" class="size">
                             </ul>
                         </div>
                     </div>
@@ -105,35 +107,27 @@
                 <button><i class="fas fa-caret-up"></i>بستن</button>
             </div>
             <div dir="rtl" class="main__footer">
-                <div class="wraper">
-
-                    <img class="logo" src="./logo_2.svg">
-                    <img class="enamad" src="./logo.jpg">
-                    <ul>
-                        <li>
-                            <h3>راهنمای خرید</h3>
-                        </li>
-                        <li>راهنمای انتخاب سایز</li>
-                        <li>روش ارسال</li>
-                        <li>روش پرداخت</li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h3>خدمات مشتریان</h3>
-                        </li>
-                        <li>پشتیبانی : <span dir="ltr">021-91005005</span></li>
-                        <li>سوالات متداول</li>
-                        <li>بازگشت کالا</li>
-                        <li>حریم خصوصی</li>
-                        <li>بفروشگاه حضوری</li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h3>درباره وب پوش</h3>
-                        </li>
-                        <li>درباره ما</li>
-                        <li>ارتباط باما</li>
-                    </ul>
+                <img class="logo" src="./logo_2.svg">
+                <ul class="flexible">
+                    <li>راهنمای خرید</li>
+                    <li>راهنمای انتخاب سایز</li>
+                    <li>روش ارسال</li>
+                    <li>روش پرداخت</li>
+                </ul>
+                <ul class="flexible">
+                    <li>خدمات مشتریان</li>
+                    <li>پشتیبانی : <span dir="ltr">021-91005005</span></li>
+                    <li>سوالات متداول</li>
+                    <li>بازگشت کالا</li>
+                    <li>حریم خصوصی</li>
+                    <li>بفروشگاه حضوری</li>
+                </ul>
+                <ul class="flexible">
+                    <li>درباره وب پوش</li>
+                    <li>درباره ما</li>
+                    <li>ارتباط باما</li>
+                </ul>
+                <div>
                     <form>
                         <h3>ثبت ایمیل در خبرنامه</h3>
                         <div class="wraper">
@@ -141,58 +135,20 @@
                             <input type="submit" value="ثبت">
                         </div>
                         <p>از جدیدترین محصولات و تخفیف ها با خیر شوید</p>
+                        <p>ما را در شبکه های اجتماعی دنبال کنید</p>
                     </form>
+                    <section class="socials">
+                        <div class="icon">
+                            <i class="fab fa-telegram"></i>
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </section>
                 </div>
-                <section class="socials">
-                    <p>ما را در شبکه های اجتماعی دنبال کنید</p>
-                    <ul>
-                        <li><i class="fab fa-telegram"></i></li>
-                        <li><i class="fab fa-facebook"></i></li>
-                        <li><i class="fab fa-instagram"></i></li>
-                    </ul>
-                </section>
             </div>
             <div class="footer__bottom"></div>
         </footer>
     </div>
-    <!-- Code injected by live-server -->
-    <script type="text/javascript">
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
-                    }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-	// ]]>
-    </script>
 </body>
 
 </html>

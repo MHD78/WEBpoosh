@@ -43,16 +43,33 @@ class MainRender {
         const template = document.getElementById("item__template");
         const templateBody = document.importNode(template.content, true);
         const inside = templateBody.querySelector("div");
-        const ProImg = inside.querySelector("img");
+        const Prosec = inside.querySelector("section");
+        const ProImg = Prosec.querySelector("img");
 
+        const quick = document.createElement("section");
+        quick.innerHTML = `
+            <span>مشاهده سریع</span>
+            <i class="fas fa-search"></i>
+        `;
+        quick.className = "quick__show";
         ProImg.src = item.image;
-        ProImg.addEventListener('mouseenter', () => {
+        inside.addEventListener('mouseenter', () => {
             ProImg.src = `${item.image.slice(0, 24)}other_file_0-medium.jpg`
+            if (window.innerWidth >= 1024) {
+                Prosec.append(quick);
+                ex[2].style.visibility = "visible"
+                ex[3].style.visibility = "visible"
+            } else { }
         });
-        ProImg.addEventListener('mouseout', () => {
+        inside.addEventListener('mouseleave', () => {
             ProImg.src = `${item.image}`
+            if (window.innerWidth >= 1024) {
+                Prosec.removeChild(quick)
+                ex[2].style.visibility = "hidden"
+                ex[3].style.visibility = "hidden"
+            }
         });
-
+        console.log(innerWidth)
         const inDiv = inside.querySelector("div");
         const ex = inDiv.querySelectorAll("*");
         ex[0].innerText = item.title;
