@@ -1,6 +1,7 @@
 class Product {
-    constructor(image, title, price, colors, sizes) {
+    constructor(image, secondryImage, title, price, colors, sizes) {
         this.image = image;
+        this.secondryImage = secondryImage;
         this.title = title;
         this.price = price;
         this.colors = colors;
@@ -27,12 +28,12 @@ class ProdList {
             sizes.push(this.avilable[i])
         }
 
-        const asa = new Product(`./images/main/${item}`, `شلوار جین مردانه  ${item.slice(0, 9)}`, "554,000 تومان", `./images/main/${item}.croped.jpg`, sizes);
+        const asa = new Product(`./images/main/${item}`, `./images/main/${item.slice(0, 10)}other_file_0-medium.jpg`, `شلوار جین مردانه  ${item.slice(0, 9)}`, "554,000 تومان", `./images/main/${item}.croped.jpg`, sizes);
         this.ProductList.push(asa);
     })
 
     pass() {
-        return this.ProductList;
+        return this.ProductList.sort((x, y) => { return y.sizes.length - x.sizes.length });
 
     }
 }
@@ -44,7 +45,11 @@ class MainRender {
         const templateBody = document.importNode(template.content, true);
         const inside = templateBody.querySelector("div");
         const Prosec = inside.querySelector("section");
-        const ProImg = Prosec.querySelector("img");
+        const ProImg = Prosec.querySelectorAll("img");
+
+        ProImg[0].src = item.image;
+        ProImg[1].src = item.secondryImage;
+        ProImg[1].style.display = "none";
 
         const quick = document.createElement("section");
         quick.innerHTML = `
@@ -52,9 +57,10 @@ class MainRender {
             <i class="fas fa-search"></i>
         `;
         quick.className = "quick__show";
-        ProImg.src = item.image;
+        // ProImg.src = item.image;
         inside.addEventListener('mouseenter', () => {
-            ProImg.src = `${item.image.slice(0, 24)}other_file_0-medium.jpg`
+            ProImg[0].style.display = "none";
+            ProImg[1].style.display = "block";
             if (window.innerWidth >= 1024) {
                 Prosec.append(quick);
                 ex[2].style.visibility = "visible"
@@ -62,7 +68,8 @@ class MainRender {
             }
         });
         inside.addEventListener('mouseleave', () => {
-            ProImg.src = `${item.image}`
+            ProImg[0].style.display = "block";
+            ProImg[1].style.display = "none";
             if (window.innerWidth >= 1024) {
                 Prosec.removeChild(quick)
                 ex[2].style.visibility = "hidden"
