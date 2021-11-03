@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <header>
             <div class="message">
                 <a>مشاهده محصولات</a>
@@ -24,7 +24,7 @@
         <nav class="mobile">
             <i class="fas fa-shopping-bag"></i>
             <img class="logo" src="https://webpoosh.com/site/app/img/logo/wp-logo.png">
-            <i class="fas fa-bars"></i>
+            <i id="show__menu" class="fas fa-bars"></i>
         </nav>
         <nav dir="rtl" class="desktop">
             <ul class="links">
@@ -44,6 +44,28 @@
                 <li><i class="fas fa-search"></i></li>
             </ul>
         </nav>
+        <div id="mobile__menu" dir="rtl" class="mobile__menu">
+            <button id="close"><i class="fas fa-close"></i></button>
+            <form>
+                <input type="text" />
+                <button><i class="fas fa-search"></i></button>
+            </form>
+            <ul>
+                <li>ست</li>
+                <li>جدیدترین ها</li>
+                <li>لباس<i class="fas fa-chevron-down"></i></li>
+                <li>کفش<i class="fas fa-chevron-down"></i></li>
+                <li>اکسسوری<i class="fas fa-chevron-down"></i></li>
+                <li>تخفیف ها<i class="fas fa-chevron-down"></i></li>
+                <li>کارت هدیه</li>
+                <li>فروشگاه حضوری</li>
+            </ul>
+            <ul class="other">
+                <li><i class="fas fa-lock"></i>ورود/عضویت</li>
+                <li><i class="fas fa-user"></i>پروفایل</li>
+                <li><i class="fas fa-shopping-basket"></i>پیگیری سفارش</li>
+            </ul>
+        </div>
         <div class="bottom-header">
             <p>وب پوش &nbsp<i class="fas fa-chevron-left"></i>&nbsp شلوار جین مردانه</p>
         </div>

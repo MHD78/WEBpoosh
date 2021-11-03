@@ -103,3 +103,5 @@ class Final {
 Final.init();
 
 
+document.getElementById("show__menu").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "50%"; })
+document.getElementById("close").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0" })
