@@ -103,5 +103,21 @@ class Final {
 Final.init();
 
 
-document.getElementById("show__menu").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "50%"; })
-document.getElementById("close").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0" })
+document.getElementById("show__menu").addEventListener('click', (ev) => { document.getElementById("mobile__menu").style.width = "45%"; })
+document.getElementById("close").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0"; })
+
+let click = 0;
+const tops = document.getElementById("top");
+const closeBTN = document.getElementById("closeBTN");
+closeBTN.addEventListener('click', () => {
+    if (click % 2 === 0) {
+        tops.style.height = "auto"
+        tops.style.boxShadow = "none"
+        closeBTN.innerHTML = "<i class='fas fa-caret-up'></i>بستن"
+    } else {
+        closeBTN.innerHTML = "<i class='fas fa-caret-down'></i>بیشتر"
+        tops.style.height = "200px"
+        tops.style.boxShadow = "#e6e5e5 0px -50px 56px -28px inset"
+    }
+    click++
+})

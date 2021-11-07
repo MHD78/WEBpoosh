@@ -62,14 +62,14 @@ nav{
 
 }
 .mobile__menu{
-    background-color: #faf8f8;
+    background-color: #fff;
     width: 0;
     position: fixed;
     top:0;
     right: 0;
-    z-index: 2;
+    z-index: 1;
     overflow-x: hidden;
-    transition: 0.4s;
+    transition: 0.3s;
     /* height: 100vh; */
     
 }
@@ -299,23 +299,27 @@ main{
 }
 
 /* ===footer=== */
-footer .top__footer{
+
+footer summary{
+    box-shadow: #e6e5e5 0px -50px 56px -28px inset;
+    height: 200px;
+    transition: 0.5s;
     max-width: var(--mx-width);
-    margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
     padding: 15px;
     text-align: justify;
+    overflow: hidden;
 }
-footer .top__footer p{
+footer summary p{
     font-family: iranYekan-reg,sans-serif;
     padding: 3px;
     margin-bottom: 12px;
     font-size: var(--secondry-fns);
     color: var(--icon-black);
 }
-footer .top__footer h2{
+footer summary h2{
     /* font-family: iranYekan-reg,sans-serif; */
     font-size: var(--main-fns);
     padding: 3px;
@@ -324,13 +328,20 @@ footer .top__footer h2{
     color: #000;
     font-weight: 500;
 }
-footer .top__footer button{
+.btn__holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#closeBTN{
+    border: none;
     background-color: white;
-    border: 1px solid var(--icon-black);
     text-align: center;
     font-size: 13px;
     padding: 10px;
-    margin: auto;
+}
+#closeBTN i{
+    margin-right: 10px;
 }
 footer .main__footer{
     max-width: var(--mx-width);
