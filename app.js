@@ -44,6 +44,7 @@ class MainRender {
         const template = document.getElementById("item__template");
         const templateBody = document.importNode(template.content, true);
         const inside = templateBody.querySelector("div");
+        inside.dataset.item = item.title;
         const Prosec = inside.querySelector("section");
         const ProImg = Prosec.querySelectorAll("img");
 
@@ -51,18 +52,20 @@ class MainRender {
         ProImg[1].src = item.secondryImage;
         ProImg[1].style.display = "none";
 
-        const quick = document.createElement("section");
-        quick.innerHTML = `
-            <span>مشاهده سریع</span>
-            <i class="fas fa-search"></i>
-        `;
-        quick.className = "quick__show";
-        // ProImg.src = item.image;
+        // const quick = document.createElement("section");
+        // quick.innerHTML = `
+        //     <span>مشاهده سریع</span>
+        //     <i class="fas fa-search"></i>
+        // `;
+        // quick.className = "quick__show";
+        // quick.id = "qBTN"
+        ProImg.src = item.image;
         inside.addEventListener('mouseenter', () => {
             ProImg[0].style.display = "none";
             ProImg[1].style.display = "block";
             if (window.innerWidth >= 1024) {
-                Prosec.append(quick);
+                // Prosec.append(quick);
+                Prosec.lastElementChild.style.visibility = "visible"
                 ex[2].style.visibility = "visible"
                 ex[3].style.visibility = "visible"
             }
@@ -71,7 +74,8 @@ class MainRender {
             ProImg[0].style.display = "block";
             ProImg[1].style.display = "none";
             if (window.innerWidth >= 1024) {
-                Prosec.removeChild(quick)
+                // Prosec.removeChild(quick)
+                Prosec.lastElementChild.style.visibility = "hidden"
                 ex[2].style.visibility = "hidden"
                 ex[3].style.visibility = "hidden"
             }
@@ -91,6 +95,32 @@ class MainRender {
         main.append(templateBody);
     }
 }
+class ModalRender {
+    static instance(item) {
+        const main = document.getElementById("productModal");
+        const template = document.getElementById("modal__template");
+        const templateBody = document.importNode(template.content, true);
+        const inside = templateBody.querySelectorAll("section");
+        // inside[0].append(document.createElement("i").className = "fas fa-close")
+        const modalSec = document.createElement("img");
+        modalSec.src = item.secondryImage;
+        inside[0].append(modalSec)
+        const modalFir = document.createElement("img");
+        modalFir.src = item.image;
+        inside[1].append(modalFir);
+        const detail = inside[2].querySelectorAll("section");
+        detail[0].querySelector("h3").innerText = item.title;
+        detail[0].querySelector("h4").innerText = item.price;
+        detail[1].querySelector("img").src = item.colors;
+        item.sizes.forEach(it => {
+            const nItem = document.createElement("li")
+            nItem.innerText = it
+            detail[1].querySelector("ul").append(nItem)
+        })
+        main.append(templateBody);
+        inside[0].querySelector("i").addEventListener("click", () => { main.querySelectorAll("section").forEach(el => { el.remove() }) })
+    }
+}
 class Final {
     static init() {
         const og = new ProdList;
@@ -101,10 +131,28 @@ class Final {
 }
 
 Final.init();
+const prodList = new ProdList;
+const vvv = prodList.pass();
+document.getElementById("show__menu").addEventListener('click', (ev) => { document.getElementById("mobile__menu").style.width = "100%"; document.body.style.overflowY = "hidden" })
+document.getElementById("close").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0"; document.body.style.overflowY = "scroll" })
+document.getElementById("main").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0"; })
+document.querySelectorAll("#qck").forEach(el => {
+    el.addEventListener("click", (ev) => {
+        const prodName = ev.currentTarget.closest("div").dataset.item
+        vvv.forEach(pro => {
+            if (prodName === pro.title) {
+                ModalRender.instance(pro)
+                document.getElementById("productModal").style.top = `${ev.pageY - ev.offsetY}px`
+                console.log(ev)
+
+                document.getElementById("productModal").style.display = "grid"
+            }
+        })
+    })
+})
 
 
-document.getElementById("show__menu").addEventListener('click', (ev) => { document.getElementById("mobile__menu").style.width = "45%"; })
-document.getElementById("close").addEventListener('click', () => { document.getElementById("mobile__menu").style.width = "0"; })
+
 
 let click = 0;
 const tops = document.getElementById("top");
